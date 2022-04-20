@@ -1,0 +1,41 @@
+{
+
+    "students" : [
+
+            {
+
+            "firstname":"Satyam",
+            "lastname": "shukla",
+            "id":1,
+            "branch":"Comp",
+            "Div":"C",
+            "Add":"Nallsopara",
+
+
+            },{
+
+            "firstname":"Dinesh",
+            "lastname": "choudhary",
+            "id":2,
+            "branch":"Comp",
+            "Div":"A",
+            "Add":"Nallsopara",
+
+
+            },{
+
+            "firstname":"Ankush",
+            "lastname": "Singh",
+            "id":3,
+            "branch":"Comp",
+            "Div":"C",
+            "Add":"Nallsopara",
+
+
+            }
+
+
+
+    ]
+
+}

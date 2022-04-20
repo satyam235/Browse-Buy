@@ -1,0 +1,89 @@
+{%  extends 'D:\PRACTS SEMV\IP\PS-Final_project-15_TECOMP_C_Satyam_Shukla\PS-Final_project-15_TECOMP_C_Satyam_Shukla\Browse n buy\browse_n_buy\home\templates\home\basic.html'  %}
+
+
+
+{% block title%}
+Register
+{% endblock%}
+{% block body%}
+<div class="container" style="margin-bottom: 5%">
+<br>  <p class="text-center"> Register yourself quickly  </p>
+<hr>
+
+
+<div class="row justify-content-center">
+<div class="col-md-6">
+<div class="card">
+<header class="card-header">
+	<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>
+	<h4 class="card-title mt-2">Sign up</h4>
+</header>
+<article class="card-body">
+<form >
+	<div class="form-row" style="padding-bottom: 6%">
+    <div class="form-group">
+		<div class="col form-group" style="padding-bottom: 6%">
+			<label style="padding-bottom:3%">First name </label>
+		  	<input type="text" class="form-control" placeholder="">
+		</div> <!-- form-group end.// -->
+		<div class="col form-group">
+			<label style="padding-bottom: 3%">Last name</label>
+		  	<input type="text" class="form-control" placeholder=" ">
+		</div> <!-- form-group end.// -->
+	</div>
+    </div>
+    <div class="form-row" style="padding-bottom: 5%">
+	<div class="form-group">
+		<label style="padding-bottom: 3%">Email address</label>
+		<input type="email" class="form-control" placeholder="">
+		<small class="form-text text-muted">We'll never share your email with anyone else.</small>
+	</div>
+    </div>
+    <div class="form-row" style="padding-bottom: 2%">
+	<div class="form-group">
+			<label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" name="gender" value="option1">
+		  <span class="form-check-label"> Male </span>
+		</label>
+		<label class="form-check form-check-inline">
+		  <input class="form-check-input" type="radio" name="gender" value="option2">
+		  <span class="form-check-label"> Female</span>
+		</label>
+	</div>
+    </div><!-- form-group end.// -->
+	<div class="form-row" style="padding-bottom: 5%">
+		<div class="form-group col-md-6">
+		  <label style="padding-bottom:3%">City</label>
+		  <input type="text" class="form-control">
+		</div> <!-- form-group end.// -->
+		<div class="form-group col-md-6" >
+		  <label style="padding-top:5%; padding-bottom:3%">Country</label>
+		  <select id="inputState" class="form-control">
+		    <option> Choose...</option>
+		      <option>Uzbekistan</option>
+		      <option>Russia</option>
+		      <option selected="">United States</option>
+		      <option>India</option>
+		      <option>Afganistan</option>
+		  </select>
+		</div> <!-- form-group end.// -->
+	</div> <!-- form-row.// -->
+	<div class="form-group" style="padding-bottom:5%">
+		<label>Create password</label>
+	    <input class="form-control" type="password">
+	</div> <!-- form-group end.// -->
+    <div class="form-group" style="padding-bottom:5%">
+        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+    </div> <!-- form-group// -->
+    <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>
+</form>
+</article> <!-- card-body end .// -->
+<div class="border-top card-body text-center">Have an account? <a href="">Log In</a></div>
+</div> <!-- card.// -->
+</div> <!-- col.//-->
+
+</div> <!-- row.//-->
+
+
+</div>
+{% endblock%}

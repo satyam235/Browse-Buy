@@ -1,0 +1,132 @@
+{%  extends 'D:\PRACTS SEMV\IP\PS-Final_project-15_TECOMP_C_Satyam_Shukla\PS-Final_project-15_TECOMP_C_Satyam_Shukla\Browse n buy\browse_n_buy\home\templates\home\basic.html'  %}
+{% load static %}
+
+{% block head  %}
+
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style media="screen">
+  .button1 {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button2 {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+</style>
+
+{% endblock %}
+
+{% block title%}
+cart | page
+{% endblock%}
+
+
+
+{% block body%}
+
+
+
+
+<br><br><br><br>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+
+      <h2 style="text-align:center;padding-bottom:5%; font-family: 'Lato', sans-serif;" class="panel-title"> Your Shopping Basket </h2>
+    </div>
+
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Remove From Cart</th>
+
+        </tr>
+      </thead>
+      {% for p in products %}
+  {% if p %}
+
+      <tr>
+        <td> {{p.name}}</td>
+        <td> <img src="/media/{{p.product_image}}" alt="Profile Pic" height="40px" width="40px" /></td>
+        <td>{{p.price}}</td>
+          <td>{{p.description}}</td>
+
+        <td><a class="btn btn-danger btn-xs" href="{% url 'remove-from-cart' p.id %}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+
+      </tr>
+      {%else%}
+      <br><br><br>
+      <h1>no products</h1>
+      {% endif %}
+      {% endfor %}
+    </table>
+  </div>
+</div>
+<br><br><br>
+<div style="text-align: center;">
+  <button class="button1 button2">Total {{total}}</button>
+  <a href="/home/order"><button class="button1" ><span>Purchase </span></button></a>
+</div>
+
+
+</div>
+</div>
+<br><br><br><br><br>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,138 @@
+{%  extends 'D:/PRACTS SEMV/IP/PS-Final_project-15_TECOMP_C_Satyam_Shukla/PS-Final_project-15_TECOMP_C_Satyam_Shukla/Browse n buy/browse_n_buy/home/templates/home/basic.html'  %}
+{% load static %}
+{% block head%}
+{% endblock%}
+{% block title%}
+Home | page
+{% endblock%}
+
+
+{% block body%}
+
+
+<div style="width: 70%; height: 20px; border-bottom: 3px solid #e6102d; text-align: center; margin-top: 5%;margin-left: 15% ;" >
+    <span style="font-size: 25px; background-color:white; padding: 0 10px;">
+      Most Premium Watches  at one place
+    </span>
+  </div>
+
+
+   <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel"  style="margin-top: 50px;">
+
+
+    <div class="carousel-inner" data-bs-interval="3000">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <div class="d-flex justify-content-center ">
+        <img class="img-fluid align-middle" src="{% static 'images/images/realme.jpg'%}" width=20%; alt="..">
+
+        </div>
+      </div>
+
+      <div class="carousel-item "data-bs-interval="3000">
+        <div class="d-flex justify-content-center">
+        <img class="img-fluid align-middle" src="{% static  'images/images/watch2.png '%}" width=22%; alt="...">
+        </div>
+
+
+      </div>
+      <div class="carousel-item"data-bs-interval="3000">
+          <div class="d-flex justify-content-center w-100 h-100">
+        <img  class="img-fluid align-middle" src="{% static 'images/images/watch1.png'%}" width=22%;  alt="...">
+          </div>
+
+    </div>
+  </div>
+
+
+
+
+  <div style="width: 70%; height: 20px; border-bottom: 3px solid #e6102d; text-align: center; margin-top: 50px;margin-left: 15%;" >
+      <span style="font-size: 25px; background-color: white; padding: 0 10px;">
+        Featured Items
+      </span>
+    </div>
+
+
+    <div class="row row-cols-1 row-cols-sm-3 g-4" style="margin-left:20%;margin-right: 20%;margin-top: 5%;margin-bottom:5%;">
+
+      {%  for i in products %}
+      <div class="col">
+        <div class="card h-80">
+          <img src="/media/{{i.product_image}}" width=40%  height=250px;  class="card-img-top" alt="...">
+
+          <div class="card-footer">
+            <small class="text-muted">{{i.name}}</small>
+
+
+            <a style ="color:black "class="cart" href="{% url 'add-to-cart' i.id  %}">
+
+                  <span class="add-to-cart">
+                    <span style="padding-left:120px;"><i class="fas fa-shopping-cart"></i></span>
+                  </span>
+        </a>
+
+            </div>
+
+
+        </div>
+      </div>
+      {% endfor%}
+    </div>
+       <br id="Aboutus">
+
+       <div style="width: 70%; height: 20px; border-bottom: 3px solid #e6102d; text-align: center; margin-top: 30px;margin-left: 15%;"   >
+      <span style="font-size: 25px; background-color: white; padding: 0 10px;">
+           About us
+      </span>
+    </div>
+
+       <div class="row" style="padding-left: 13%; padding-right:13%;   width:auto  ;height:30%; padding-right:7%; padding-top:4%; padding-bottom:4%">
+           <div class="col md-3 ">
+  <div class="card text-center border-0">
+      <br >
+      <i class="fas fa-users fa-7x"></i>
+
+    <div class="card-body">
+        <br>
+      <h5 class="card-title">User friendly </h5>
+      <p class="card-text">We provide most awesome and easy interaction with our users.</p>
+
+    </div>
+  </div>
+           </div>
+
+
+             <div class="col md-3">
+  <div class="card text-center border-0">
+      <br>
+      <i class="fab fa-apple fa-7x"></i>
+
+    <div class="card-body">
+        <br>
+      <h5 class="card-title">Top brands </h5>
+      <p class="card-text">We provide products from top brands all over the globe.</p>
+          </div>
+  </div>
+           </div>
+
+ <div class="col md-3">
+  <div class="card text-center border-0">
+      <br>
+     <i class="fas fa-dollar-sign fa-7x"></i>
+
+    <div class="card-body">
+        <br>
+      <h5 class="card-title"> Best price </h5>
+      <p class="card-text">We provide all the products at best prices.</p>
+
+    </div>
+  </div>
+           </div>
+       </div>
+
+
+
+
+
+
+{% endblock %}

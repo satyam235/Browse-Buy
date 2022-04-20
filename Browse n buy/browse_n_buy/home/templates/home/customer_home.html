@@ -1,0 +1,79 @@
+{%  extends 'D:\PRACTS SEMV\IP\PS-Final_project-15_TECOMP_C_Satyam_Shukla\PS-Final_project-15_TECOMP_C_Satyam_Shukla\Browse n buy\browse_n_buy\home\templates\home\customer_base.html'  %}
+{% load static %}
+{% block head%}
+{% endblock%}
+{% block title%}
+Home | page
+{% endblock%}
+
+
+{% block body%}
+
+
+<div style="width: 70%; height: 20px; border-bottom: 3px solid #e6102d; text-align: center; margin-top: 30px;margin-left: 15%;" >
+    <span style="font-size: 25px; background-color:white; padding: 0 10px;">
+      Worlds best Watches  at one place !!!
+    </span>
+  </div>
+
+
+   <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel">
+
+
+    <div class="carousel-inner" data-bs-interval="3000">
+      <div class="carousel-item active" data-bs-interval="2000">
+        <video src="{% static  'images/images/vedio1.mp4 '%}"height=380px; style="margin-left: 30%;margin-top: 5%;" preload autoplay loop poster="{% static 'images/images/thumbnail1.webp'%}">
+
+        </div>
+
+      <div class="carousel-item"data-bs-interval="3000">
+        <img src="{% static  'images/images/watch2.png '%}"   height=380px; style="margin-left: 40%;margin-top: 5%;" alt="...">
+      </div>
+      <div class="carousel-item"data-bs-interval="3000">
+        <img src="{% static 'images/images/watch1.png'%}" height=380px; style="margin-left: 35%;margin-top: 5%;" alt="...">
+
+
+    </div>
+  </div>
+
+
+
+
+  <div style="width: 70%; height: 20px; border-bottom: 3px solid #e6102d; text-align: center; margin-top: 30px;margin-left: 15%;" >
+      <span style="font-size: 25px; background-color: white; padding: 0 10px;">
+        Featured Items
+      </span>
+    </div>
+
+     {%if products%}
+    <div class="row row-cols-1 row-cols-sm-3 g-4" style="margin-left:20%;margin-right: 20%;margin-top: 5%;margin-bottom:5%;">
+
+      {%  for i in products %}
+      <div class="col">
+        <div class="card h-80">
+          <img src="/media/{{i.product_image}}" width=40%  height=250px;  class="card-img-top" alt="...">
+
+          <div class="card-footer">
+            <small class="text-muted">{{i.name}}</small>
+
+
+            <a style ="color:black "class="cart" href="{% url 'add-to-cart' i.id  %}">
+
+                  <span class="add-to-cart">
+                    <span style="padding-left:120px;"><i class="fas fa-shopping-cart"></i></span>
+                  </span>
+        </a>
+
+            </div>
+
+
+        </div>
+      </div>
+      {% endfor%}
+    </div>
+
+{%else%}
+<h3 style="text-align:center; color:yellow;">No Search Found</h3>
+{%endif%}
+
+{% endblock %}
