@@ -143,7 +143,7 @@ EMAIL_HOST_PASSWORD = 'gmail password' # host email password required
 # https://myaccount.google.com/lesssecureapps
 # otherwise you will get SMTPAuthenticationError at /contactus
 # this process is required because google blocks apps authentication by default
-EMAIL_RECEIVING_USER = ['1032190221@tcetmumbai.in'] # email on which you will receive messages sent from website
+EMAIL_RECEIVING_USER = ['reciever@gmail.com'] # email on which you will receive messages sent from website
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
