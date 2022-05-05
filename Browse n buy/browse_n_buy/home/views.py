@@ -275,16 +275,12 @@ def customer_address_view(request):
     else:
         product_count_in_cart=0
 
-    addressForm = forms.AddressForm()
+    
     if request.method == 'POST':
-        addressForm = forms.AddressForm(request.POST)
-        if addressForm.is_valid():
-            # here we are taking address, email, mobile at time of order placement
-            # we are not taking it from customer account table because
-            # these thing can be changes
-            email = addressForm.cleaned_data['Email']
-            mobile=addressForm.cleaned_data['Mobile']
-            address = addressForm.cleaned_data['Address']
+        
+            email = request.POST.get('email')
+            mobile=request.POST.get('mobile')
+            address = request.POST.get('addr')
             #for showing total price on payment page.....accessing id from cookies then fetching  price of product from db
             total=0
             if 'product_ids' in request.COOKIES:
@@ -302,7 +298,7 @@ def customer_address_view(request):
             response.set_cookie('address',address)
             response.set_cookie('total',total)
             return response
-    return render(request,'home/order.html',{'addressForm':addressForm,'product_in_cart':product_in_cart,'product_count_in_cart':product_count_in_cart})
+    return render(request,'home/order.html',{'product_in_cart':product_in_cart,'product_count_in_cart':product_count_in_cart})
 
 @login_required(login_url='customerlogin')
 def razorpay_test(request):

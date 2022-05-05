@@ -1,8 +1,28 @@
-{%  extends 'D:\PRACTS SEMV\IP\PS-Final_project-15_TECOMP_C_Satyam_Shukla\PS-Final_project-15_TECOMP_C_Satyam_Shukla\Browse n buy\browse_n_buy\home\templates\home\customer_base.html'  %}
+{%  extends 'home/customer_base.html'  %}
 {% load static %}
 {% load widget_tweaks %}
 {% block head%}
+<style>
+  input[type="hidden"]{
+    color: white;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #3e2093;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 42%;
+  margin-top: 15px;
 
+}
+ input[type="hidden"]:hover{
+  background: #9f9d9d;
+  color: #3e2093;
+}
+
+</style>
 {% endblock%}
 {% block title%}
 Home | page
@@ -14,9 +34,9 @@ Home | page
 	<div class="row">
         <div class="jumbotron" style="box-shadow: 2px 2px 4px #000000;">
             <h2 class="text-center">YOUR ORDER HAS BEEN RECEIVED</h2>
-          <h3 class="text-center">Thank you for ordering with our website, your order is processing.</h3>
+          <h3 class="text-center" style="margin-top:40px;">Thank you for using our website to place a purchase your order will be completed after the payment has been received.</h3>
           
-          <p class="text-center">Your order will be delivered in next 3-6 days.</p>
+          <p class="text-center">You can pay us with any bank, as well as UPI, debit cards, and credit cards.</p>
           <p class="text-center">You will receive an order confirmation email with details of your order and a link to track your process.</p>
             <center><div class="btn-group" style="margin-top:50px;">
               <form  name="razorpay" action="make-payment" method="POST">{% csrf_token %}
