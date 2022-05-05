@@ -1,6 +1,10 @@
+import imp
+import json
+from urllib import response
 from django.shortcuts import render,redirect,reverse
 from django.template.loader import get_template
-
+import razorpay
+from django import forms
 from . import models,forms
 from django.http import HttpResponseRedirect,HttpResponse
 from django.core.mail import send_mail
@@ -8,9 +12,9 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib import messages
 from django.conf import settings
-
+razorpay_client = razorpay.Client(auth=("rzp_test_VOC7aiXFpyFaG5", "S0hFSWYq9Vit5MndE52ZH6ys"))
 from .models import Product
-
+from django.views.decorators.csrf import csrf_exempt
 def home(request):
     products = Product.objects.all()
     #home_products=products.objects.all()
@@ -118,11 +122,6 @@ def afterlogin_view(request):
         return redirect('admin-dashboard')
 
 
-
-
-
-
-
 def remove_from_cart_view(request,pk):
     #for counter in cart
     if 'product_ids' in request.COOKIES:
@@ -209,7 +208,7 @@ def customer_address_view(request):
                     for p in products:
                         total=total+p.price
 
-            response = render(request, 'home/payment.html',{'total':total})
+            response = render(request, 'home/make-payment',{'total':total})
             response.set_cookie('email',email)
             response.set_cookie('mobile',mobile)
             response.set_cookie('address',address)
@@ -220,7 +219,7 @@ def customer_address_view(request):
 def search_view(request):
     # whatever user write in search box we get in query
     query = request.GET['query']
-    #name__icontains=query
+    #name__icontains=query  
     products=models.Product.objects.all().filter(category__icontains=query)
     if 'product_ids' in request.COOKIES:
         product_ids = request.COOKIES['product_ids']
@@ -295,25 +294,45 @@ def customer_address_view(request):
                     products=models.Product.objects.all().filter(id__in = product_id_in_cart)
                     for p in products:
                         total=total+p.price
-            print(total)
-            response = render(request, 'home/payment.html',{'total':total})
+            total=total*100
+            request.COOKIES['total']=total
+            response = render(request, 'home/razorpay.html',{'total':total,'email':email,'mobile':mobile})
             response.set_cookie('email',email)
             response.set_cookie('mobile',mobile)
             response.set_cookie('address',address)
+            response.set_cookie('total',total)
             return response
     return render(request,'home/order.html',{'addressForm':addressForm,'product_in_cart':product_in_cart,'product_count_in_cart':product_count_in_cart})
 
-
-
+@login_required(login_url='customerlogin')
+def razorpay_test(request):
+    if request.method=="POST":
+        amount = request.COOKIES['total']
+        payment_id = request.POST.get('razorpay_payment_id')
+        razorpay_client.payment.capture(payment_id, amount)
+        payment_success_view(request)
+        
+        email = request.COOKIES['email']
+        name = "Browse 'N Buy"
+        print(email)
+        message = "We have recieved your payment. Your order is being processed. You will recieve your order within 3-5 working days."
+        send_mail(str(name), message, settings.EMAIL_HOST_USER,[email],
+                    fail_silently=False)
+        response=render(request,'home/payment_success.html')
+        response.delete_cookie('product_ids')
+        response.delete_cookie('email')
+        response.delete_cookie('mobile')
+        response.delete_cookie('address')
+        return response
+    return  render(request,'home/razorpay.html')
 
 def cutomer_contact_us(request):
     sub = forms.ContactusForm()
     if request.method == 'POST':
-        sub = forms.ContactusForm(request.POST)
-        if sub.is_valid():
-            email = sub.cleaned_data['Email']
-            name = sub.cleaned_data['Name']
-            message = sub.cleaned_data['Text']
+            email = request.POST.get('email')
+            name = request.POST.get('name')
+            message = request.POST.get('msg')
+            
             send_mail(str(name) + ' || ' + str(email), message, settings.EMAIL_HOST_USER, settings.EMAIL_RECEIVING_USER,
                       fail_silently=False)
             return render(request, 'home/contact_succes.html')
