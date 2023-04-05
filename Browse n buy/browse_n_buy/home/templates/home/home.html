@@ -1,6 +1,9 @@
-{%  extends 'D:/PRACTS SEMV/IP/PS-Final_project-15_TECOMP_C_Satyam_Shukla/PS-Final_project-15_TECOMP_C_Satyam_Shukla/Browse n buy/browse_n_buy/home/templates/home/basic.html'  %}
+{%  extends 'home/basic.html'  %}
 {% load static %}
 {% block head%}
+<style>
+  .home-testimonial{background-color: #121212;;height: 380px;margin-bottom: 10%;}.home-testimonial-bottom{background-color: #f8f8f8;transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;margin-top: 20px;margin-bottom: 0px;position: relative;height: 130px;top: 190px}.home-testimonial h3{color: var(--orange);font-size: 14px;font-weight: 500;text-transform: uppercase}.home-testimonial h2{color: white;font-size: 28px;font-weight: 700}.testimonial-inner{position: relative;top: -174px}.testimonial-pos{position: relative;top: 24px}.testimonial-inner .tour-desc{border-radius: 5px;padding: 40px}.color-grey-3{font-family: "Montserrat", Sans-serif;font-size: 14px;color: #6c83a2}.testimonial-inner img.tm-people{width: 60px;height: 60px;-webkit-border-radius: 50%;border-radius: 50%;-o-object-fit: cover;object-fit: cover;max-width: none}.link-name{font-family: "Montserrat", Sans-serif;font-size: 14px;color: #6c83a2}.link-position{font-family: "Montserrat", Sans-serif;font-size: 12px;color: #6c83a2}
+</style>
 {% endblock%}
 {% block title%}
 Home | page
@@ -130,7 +133,56 @@ Home | page
            </div>
        </div>
 
-
+       <section class="home-testimonial">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center testimonial-pos">
+                <div class="col-md-12 pt-4 d-flex justify-content-center">
+                    <h1 style="color: white;">Testimonials</h1>
+                </div>
+                <div class="col-md-12 d-flex justify-content-center">
+                    <h2>Explore the Customers experience</h2>
+                </div>
+            </div>
+            <section class="home-testimonial-bottom">
+                <div class="container testimonial-inner">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-4 style-3">
+                            <div class="tour-item ">
+                                <div class="tour-desc bg-white">
+                                    <div class="tour-text color-grey-3 text-center">&ldquo;Great prices on a very interesting selection of watches. Shipping was quick and the purchase experience was smooth and easy all around. The watch arrived well-packed and in perfect condition. Thank you!&rdquo;</div>
+                                    <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://toppng.com/uploads/preview/icons-logos-emojis-user-icon-png-transparent-11563566676e32kbvynug.png" alt=""></div>
+                                    <div class="link-name d-flex justify-content-center"></div>
+                                    <div class="link-position d-flex justify-content-center">Customer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 style-3">
+                            <div class="tour-item ">
+                                <div class="tour-desc bg-white">
+                                    <div class="tour-text color-grey-3 text-center">&ldquo;
+                                     I've been keeping an eye out for short of going to consignment shops out of India. Shopping was painless, shipping was fast and loving the watch!&rdquo;</div>
+                                    <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="data:image/png;base64,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" alt=""></div>
+                                    <div class="link-name d-flex justify-content-center">Joseph woodward</div>
+                                    <div class="link-position d-flex justify-content-center">Customer</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 style-3">
+                            <div class="tour-item ">
+                                <div class="tour-desc bg-white">
+                                    <div class="tour-text color-grey-3 text-center">&ldquo;Every time my package arrives I am amazed at the quality of the prdoucts.
+                                      Good selection, good prices and fast shipping, along with the best customer service.&rdquo;</div>
+                                    <div class="d-flex justify-content-center pt-2 pb-2"><img class="tm-people" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc1YjfMCOFR7sWDL0RQViMqpeFqx23qGZ2RQ&usqp=CAU" alt=""></div>
+                                    <div class="link-name d-flex justify-content-center">Vinay Kumar</div>
+                                    <div class="link-position d-flex justify-content-center">Customer</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+      </section>
+      
+      
 
 
 

@@ -1,6 +1,27 @@
-{%  extends 'D:\PRACTS SEMV\IP\PS-Final_project-15_TECOMP_C_Satyam_Shukla\PS-Final_project-15_TECOMP_C_Satyam_Shukla\Browse n buy\browse_n_buy\home\templates\home\basic.html'  %}
+{%  extends 'home/basic.html'  %}
 {% load static%}
 {% block head%}
+<style>
+    .button input[type="button"]{
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #121212;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 42%;
+  margin-top: 15px;
+
+}
+.button input[type="button"]:hover{
+  background: #9f9d9d;
+  color: #121212;
+}
+
+</style>
 {% endblock%}
 {% block title%}
 logout
@@ -9,10 +30,13 @@ logout
 {% block body%}
 <br><br><br>
 
-<img src="{% static 'images/images/logout_img.png' %}" style="width:800px; height:100px; padding-left:400px;">
-
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br>
-
+<img src="{% static 'images/images/logout_img.png' %}" style="width:800px; height:100px; margin-top: 60px;padding-left:400px;">
+<br><br>
+<div class="button">
+    
+    <input type="button" onclick="location.href='/home'" value="Home Page"  >
+    <input type="button" onclick="location.href='/home/customerlogin'"style="margin-left: 25px;" value="Login"  >
+  </div>
+<br>
+<br><br>
 {% endblock%}

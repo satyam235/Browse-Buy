@@ -40,7 +40,7 @@ class OrderForm(forms.ModelForm):
 
 #for contact us page
 class ContactusForm(forms.Form):
-    Name = forms.CharField(max_length=30)
-    Email = forms.EmailField()
-    Text = forms.CharField(label='Text     ',max_length=50)
+    Name = forms.CharField()
+    Email = forms.EmailField(label='Email')
+    Text = forms.CharField(label='Text',max_length=60)
 

@@ -41,7 +41,7 @@ urlpatterns = [
     path('order', views.customer_address_view),
     path('paymentsuccess', views.payment_success_view,name='payment-success'),
     path('my-order', views.my_order_view,name='my-order'),
-
+    path("make-payment",views.razorpay_test)
 
 
 ]
